@@ -8,7 +8,7 @@ import android.util.Log;
  * Created by Coke on 4/21/17.
  */
 
-class UsbHandler extends Handler {
+public class UsbHandler extends Handler {
     private final WDC1003Interface usbInterface;
 
     UsbHandler(WDC1003Interface usbInterface) {
