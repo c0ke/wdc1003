@@ -1,9 +1,6 @@
 apply plugin: 'com.android.library'
 
 android {
-    group = 'com.nasket.wdc1003'
-    version = '1.0.0'
-
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
 
@@ -14,16 +11,14 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
+
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-
 }
 
 dependencies {
@@ -35,3 +30,30 @@ dependencies {
     compile 'com.github.felHR85:UsbSerial:4.5'
     testCompile 'junit:junit:4.12'
 }
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'wdc1003'
+
+    publishedGroupId = 'com.nasket.library'
+    libraryName = 'wdc1003'
+    artifact = 'wdc1003'
+
+    libraryDescription = 'An USB to serial for WDC1003 Scanner for Android'
+
+    siteUrl = 'https://github.com/c0ke/wdc1003'
+    gitUrl = 'https://github.com/c0ke/wdc1003.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'visualizeq'
+    developerName = 'Jakkapong Yuangtong'
+    developerEmail = 'visualizeq@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
