@@ -79,6 +79,9 @@ public class WDC1003 {
             }
         };
 
+        context.unregisterReceiver(usbReceiver);
+        context.unbindService(usbConnection);
+
         setFilter(context);
         startService(UsbService.class, usbConnection, null);
     }
@@ -99,6 +102,14 @@ public class WDC1003 {
         if (usbService != null) {
             usbService.write(HexData.stringTobytes(cmd));
         }
+    }
+
+    public void turnOn() {
+        sendCommand(WDC1003.buildCommand("26", "LT", "FF"));
+    }
+
+    public void turnOff() {
+        sendCommand(WDC1003.buildCommand("27", "LS", "FF"));
     }
 
     private void setFilter(Context context) {
