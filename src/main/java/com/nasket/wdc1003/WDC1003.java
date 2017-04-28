@@ -79,8 +79,12 @@ public class WDC1003 {
             }
         };
 
-        context.unregisterReceiver(usbReceiver);
-        context.unbindService(usbConnection);
+        try {
+            context.unregisterReceiver(usbReceiver);
+            context.unbindService(usbConnection);
+        } catch (Exception e) {
+            //
+        }
 
         setFilter(context);
         startService(UsbService.class, usbConnection, null);

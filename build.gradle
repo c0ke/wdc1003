@@ -38,7 +38,7 @@ ext {
     siteUrl = 'https://github.com/c0ke/wdc1003'
     gitUrl = 'https://github.com/c0ke/wdc1003.git'
 
-    libraryVersion = '1.0.0'
+    libraryVersion = '1.0.1'
 
     developerId = 'visualizeq'
     developerName = 'Jakkapong Yuangtong'
