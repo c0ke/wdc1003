@@ -90,15 +90,32 @@ public class WDC1003 {
         startService(UsbService.class, usbConnection, null);
     }
 
+    public void remove() {
+        if (context != null) {
+            if (usbReceiver != null) {
+                context.unregisterReceiver(usbReceiver);
+                usbReceiver = null;
+            }
+
+            if (usbConnection != null) {
+                context.unbindService(usbConnection);
+                usbConnection = null;
+            }
+        }
+    }
+
     public void onPause() {
-        context.unregisterReceiver(usbReceiver);
-        context.unbindService(usbConnection);
+        remove();
     }
 
     public void onResume() {
         if (context != null) {
-            setFilter(context);
-            startService(UsbService.class, usbConnection, null);
+            if (usbConnection == null) {
+                setup((Activity) context);
+            } else {
+                setFilter(context);
+                startService(UsbService.class, usbConnection, null);
+            }
         }
     }
 
