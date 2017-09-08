@@ -1,6 +1,7 @@
 # How to use this library
 
 - add custom maven repository in project's build.gradle
+
 ```
 allprojects {
     repositories {
@@ -12,17 +13,19 @@ allprojects {
 ```
 
 - add dependencies in app's build.gradle
+
 ```
-compile 'com.nasket.library:wdc1003:1.0.2'
+compile 'com.nasket.library:wdc1003:1.1.0'
 ```
 
 - define WDC1003 variable
 - call setup in `onCreate`
 - implement WDC1003Interface and required method in activity (that want to use scanner)
+
 ```
 public class MainActivity extends AppCompatActivity implements WDC1003Interface {
     private WDC1003 wdc1003 = new WDC1003();
-  
+    
     ...
     @Override
     public void message(String message) {
@@ -34,30 +37,30 @@ public class MainActivity extends AppCompatActivity implements WDC1003Interface 
         ...
         wdc1003.setup(this);
         ...
-
+        
         // turn scanner on
         wdc1003.turnOn();
-
+        
         // turn scanner off
         wdc1003.turnOff();
-
+        
         // remove wdc1003
         wdc1003.remove();
     }
     ...
-
+    
     @Override
     protected void onResume() {
       super.onResume();
       wdc1003.onResume();
     }
-
+    
     @Override
     protected void onPause() {
       super.onPause();
       wdc1003.onPause();
     }
-
+    
     @Override
     protected void onStop() {
       super.onStop();
